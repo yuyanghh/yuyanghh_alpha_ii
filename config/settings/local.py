@@ -9,8 +9,13 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+# settings/local.py
+# 1. Stdlib imports
 import os
+# 2. Core Django imports
+# 3. Third-party imports
+# 4. Imports form your apps
+from .base import get_secret
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0jr5(g^0l08qbf821+=6(zr+@)^qp*i57%4vh05=#gxadp68ui'
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'yuyanghh_alpha_ii',
 	'USER': 'yuyanghh',
-	'PASSWORD': 'NCKUf34981038',
+	'PASSWORD': get_secret('DATABASE_PASSWORD'),
 	'HOST': 'localhost',
 	'PORT': '',
     }
